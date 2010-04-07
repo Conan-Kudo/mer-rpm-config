@@ -23,7 +23,7 @@ tag-archive:
 	git tag -a $(VERSION)
 
 create-archive:
-	git-archive --format=tar --prefix=meego-rpm-config-$(VERSION)/ HEAD | bzip2 -9v > meego-rpm-config-$(VERSION).tar.bz2
+	git archive --format=tar --prefix=meego-rpm-config-$(VERSION)/ HEAD | bzip2 -9v > meego-rpm-config-$(VERSION).tar.bz2
 	@echo "The final archive is in $(NAME)-$(VERSION).tar.bz2"
 
 archive: tag-archive create-archive
