@@ -14,14 +14,11 @@
 %_prefix		/usr
 %_sysconfdir		/etc
 %_localstatedir		/var
-%_infodir		/usr/share/info
-%_mandir		/usr/share/man
+%_infodir		%{_datadir}/info
+%_mandir		%{_datadir}/man
 %_initrddir		%{_sysconfdir}/rc.d/init.d
-
 %_defaultdocdir		%{_usr}/share/doc
-
 %_fmoddir		%{_libdir}/gfortran/modules
-
 %_enable_debug_packages 1
 
 #       Default fuzz level for %patch in spec file.
