@@ -113,6 +113,7 @@
 %make_install \
   %{__make} \\\
 	DESTDIR=%{?buildroot:%{buildroot}} \\\
+	INSTALL_ROOT=%{?buildroot:%{buildroot}} \\\
   install \
   rm -f %{?buildroot:%{buildroot}}%{_infodir}/dir \
   find %{?buildroot:%{buildroot}} -regex ".*\\.la$" | xargs rm -f -- \
