@@ -3,7 +3,7 @@
 #==============================================================================
 # ---- per-platform macros.
 #
-%_vendor		MeeGo
+%_vendor		meego
 %_os			linux
 %_target_platform	%{_target_cpu}-%{_vendor}-%{_target_os}%{?_gnu}
 
