@@ -185,8 +185,22 @@ Debug information is useful when developing applications that use this\
 package or when debugging this package.\
 %files debuginfo -f debugfiles.list\
 %defattr(-,root,root)\
+\
+%package debugsource\
+Summary: Debug sources for package %{name}\
+Group: Development/Debug\
+AutoReqProv: 0\
+Requires: %{name}-debuginfo = %{version}-%{release}\
+%description debugsource\
+This package provides debug sources for package %{name}.\
+Debug sources are useful when developing applications that use this\
+package or when debugging this package.\
+%files debugsource -f debugsources.list\
+%defattr(-,root,root)\
 %endif\
 %{nil}
+
+
 
 # Bad hack to set $LANG to C during all RPM builds
 %prep \
