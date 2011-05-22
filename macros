@@ -17,7 +17,6 @@
 %_infodir		%{_datadir}/info
 %_mandir		%{_datadir}/man
 %_initrddir		%{_sysconfdir}/rc.d/init.d
-%_defaultdocdir		%{_usr}/share/doc
 %_fmoddir		%{_libdir}/gfortran/modules
 %_enable_debug_packages 1
 
@@ -184,7 +183,7 @@ This package provides debug information for package %{name}.\
 Debug information is useful when developing applications that use this\
 package or when debugging this package.\
 %files debuginfo -f debugfiles.list\
-%defattr(-,root,root)\
+%defattr(-,root,root,-)\
 \
 %package debugsource\
 Summary: Debug sources for package %{name}\
@@ -196,8 +195,32 @@ This package provides debug sources for package %{name}.\
 Debug sources are useful when developing applications that use this\
 package or when debugging this package.\
 %files debugsource -f debugsources.list\
-%defattr(-,root,root)\
+%defattr(-,root,root,-)\
 %endif\
+%{nil}
+
+
+%lang_package \
+%package lang \
+Summary: Translations for package %{name}\
+Group: Translations\
+AutoReqProv: 0\
+%description lang\
+This package provides translations for package %{name}.\
+%files lang -f %{name}.lang\
+%defattr(-,root,root,-)\
+%{nil}
+
+
+%docs_package \
+%package docs \
+Summary: Documentation for package %{name}\
+Group: Documentation\
+AutoReqProv: 0\
+%description docs\
+This package provides documentation for package %{name}.\
+%files docs -f %{name}.docs\
+%defattr(-,root,root,-)\
 %{nil}
 
 
@@ -238,6 +261,7 @@ rm -rf %{?buildroot:%{buildroot}} \
 %{nil}
 
 %find_lang      /usr/lib/rpm/find-lang.sh %{buildroot}
+%find_docs      /usr/lib/rpm/find-docs.sh %{buildroot}
 
 #
 # use internal dep generator?
@@ -459,4 +483,4 @@ install -D -m 644 %1-16.png $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/16x16/apps/
 %global __deploop() while read FILE; do /usr/lib/rpm/rpmdeps -%{1} ${FILE}; done | /bin/sort -u \
 %global __find_provides /bin/sh -c "%{?__filter_prov_cmd} %{__deploop P} %{?__filter_from_prov}" \
 %global __find_requires /bin/sh -c "%{?__filter_req_cmd}  %{__deploop R} %{?__filter_from_req}" \
-
+}
